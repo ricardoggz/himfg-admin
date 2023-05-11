@@ -1,3 +1,4 @@
+import { formatDate } from "./helpers/index.js"
 const BASE_URL = 'https://courses-rest-api-hospital.vercel.app/'
 const tbody = document.getElementById('tbody')
 const getCourses = async()=>{
@@ -6,38 +7,32 @@ const getCourses = async()=>{
         const json = await response.json()
         json.map((course)=>(
             tbody.innerHTML+=`
-                <th scope="row">${course.course_id}</th>
-                <td class="overflow-x-auto">${course.course_name}</td>
-                <td class="overflow-x-auto">
-                ${!course.course_price ? 'Precio no disponible' : course.course_price}
+                <td>${course.course_name}</td>
+                <td>
+                    ${formatDate(course.course_start_date)}
                 </td>
                 <td>
-                    <a href=${course.course_image} target="blank" class="text-info">
-                        ${!course.course_image ? '' : course.course_image}
-                    </a>
+                    ${formatDate(course.course_finish_date)}
                 </td>
                 <td>
-                    <a href=${course.course_pdf} target="blank" class="text-info">
-                        ${!course.course_pdf ? '' : course.course_pdf}
-                    </a>
+                    <button class="btn btn-success">
+                        Actualizar
+                    </button>
                 </td>
                 <td>
-                    ${new Date(course.course_start_date)}
+                    <button class="btn btn-danger">
+                        Eliminar
+                    </button>
                 </td>
                 <td>
-                    ${new Date(course.course_finish_date)}
-                </td>
-                <td>
-                    ${!course.course_password ? 'Sin contraseña' : course.course_password}
-                </td>
-                <td>
-                    ${!course.course_vimeo_folder ? 'Sin carpeta en vimeo' : course.course_vimeo_folder}
+                    <button class="btn btn-primary">
+                        Adicionales
+                    </button>
                 </td>
             `
         ))
-        return console.log(json)
     } catch (error) {
-        console.log(error)
+        throw new Error(error)
     }
 }
 getCourses()
