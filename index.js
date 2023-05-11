@@ -15,7 +15,11 @@ const getCourses = async()=>{
                     ${formatDate(course.course_finish_date)}
                 </td>
                 <td>
-                    <button class="btn btn-success">
+                    <button
+                        class="btn btn-success"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                    >
                         Actualizar
                     </button>
                 </td>
