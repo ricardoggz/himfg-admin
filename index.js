@@ -18,19 +18,19 @@ const getCourses = async()=>{
                     <button
                         class="btn btn-success"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
+                        data-bs-target="#updateCourse"
                     >
                         Actualizar
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger">
+                    <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteCourse"
+                    >
                         Eliminar
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-primary">
-                        Adicionales
                     </button>
                 </td>
             `
